@@ -5,6 +5,7 @@ const port=3001   //服务运行的端口
 
 
 //设置连接参数
+
 const connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
@@ -59,7 +60,7 @@ app.post('/user/add',(req,res)=>{
 
 
 
-
+``
 //监听端口
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

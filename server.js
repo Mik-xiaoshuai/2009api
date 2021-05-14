@@ -36,18 +36,20 @@ app.get('/user/list',(req,res)=>{
 //拼装sql语句
     let sql = "select user_id,user_name,email,password from p_users order by user_id desc limit 10"
     connection.query(sql, function (error, results, fields) {
-        console.log(res.send(results))           //将数据库查询结果返回给接口
+        res.send(results)          //将数据库查询结果返回给接口
     });
 })
 
 
 //添加用户
 app.post('/user/add',(req,res)=>{
-    let uid = req.body.user_id
-    let uname = req.body.user_name
+    //接收 post数据
+    console.log(req.body)
+    let user_id = req.body.user_id
+    let user_name = req.body.user_name
 
-    let sql = `insert into p_users (user_id,user_name) values (${uid},"${uname}")`
-    console.log(sql)
+    //入库  insert into
+    let sql = `insert into p_users (user_id,user_name) values (${user_id},"${user_name}")`
     connection.query(sql, function (error, results, fields) {
         res.send("添加成功")
     });
